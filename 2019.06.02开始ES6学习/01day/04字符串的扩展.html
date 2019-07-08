@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>字符串的扩展</title>
+</head>
+
+<body>
+  <h1>includes() startsWith() endsWith()</h1>
+  在es6之前JavaScript中只有indexOf()方法可以来确定一个字符串是否包含在另一个字符串中
+  例如 let str ='aaa'
+  aaa.indexOf('xxx') //如果xxx在str中 则返回0 如果不包含 则返回-1
+  ES6又提供了三种新的方法：
+  <ul>
+    <li>includes():返回布尔值,表示是否找到了参数字符串</li>
+    <li>startsWith(): 返回布尔值,表示参数字符串是否在源字符串的头部</li>
+    <li>endsWith():返回布尔值，表示参数字符串是否在源字符串的尾部</li>
+  </ul>
+  <script>
+    var str = 'hello world'
+    // includes
+    var inc = str.includes('ll') //true
+    var incn = str.includes('zz') //false
+    // startsWith
+    var sta = str.startsWith('he') //true
+    var stan = str.startsWith('eh') //false
+
+    // endsWith
+    var end = str.endsWith('rld') //true
+    var endn = str.endsWith('lrd') //false
+    console.log(endn) 
+  </script>
+  这三个方法都支持接收第二个参数 表示开始搜索的位置
+  <script>
+    // includes
+    var inc2 = str.includes('ld', 6) //true
+    var incn2 = str.includes('he', 6) //false
+
+    // startsWith
+    var sta2 = str.startsWith('world', 6) //true
+    var stan2 = str.startsWith('ll', 6) //false
+
+    // endsWith
+    var end2 = str.endsWith('hello', 5) //true  当有第二个参数时  它与前两个不同，它针对前n个字符，而上边另外两个方法针对从第n个位置到字符串结束位置之间的字符
+    console.log(end2)
+  </script>
+
+
+  <h1>repeat()</h1>
+  repeat(n)返回一个新字符串，表示将原字符串重复n次
+  <script>
+    console.log(str.repeat(3)) //hello worldhello worldhello world
+  </script>
+
+  <h1>padStart()、padend()</h1>
+  这两个方法是es2017引入的 作用是补全字符串长度的功能。
+  如果一个字符串的长度不足，会在头部或者尾部补全，padStart用于头部补全 padEnd用于尾部补全
+
+  <h1>模板字符串</h1>
+  模板字符串的出现解决了字符串拼接的困扰
+  以前写jq的时候，经常需要用到字符串拼接 写"和+，
+  使用模板字符串就很简单了,举个例子
+  <script>
+    var name = "小明"
+    var say = `我的名字叫${name}`
+    console.log(say) // 我的名字叫小明
+  </script>
+  既然这里边可以写js变量了 肯定也可以使用js的方法 但是不建议这样做
+</body>
+
+</html>

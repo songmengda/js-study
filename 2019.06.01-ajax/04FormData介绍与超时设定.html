@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax与comet</title>
+</head>
+
+<body>
+  <h1>XMLHttpRequest2级</h1>
+  因为xhr得到了广泛的接受，成为了事实标准。W3C也着手制定相应的标准以规范其行为
+  XMLHttpRequest 1级只是把已有的xhr对象的实现细节描述出来了。而XMLHttpRequest 2级进一步发展了XHR。
+  虽然不是所有的浏览器都完整的实现了XMLHttpRequest 2级规范 但是所有的浏览器都实现了它规定的部分内容
+
+  1.FormData
+  现代web应用中频繁使用的一项功能就是表单数据的序列化，xmlhtt 2级为此定义了Formda类型。
+  创建formda对象 并向其中添加一些数据
+  <script>
+    var data = new FormData()
+    data.append("name", "小刚")
+
+    // 发送formda格式的数据 代码如下  ：（假如html中有我们表单元素id为myForm)
+    var xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status >= 200 && xhr.status < 300 || xhr == 304) {
+          console.log("请求完成", xhr.responseText)
+        } else {
+          console.log('请求失败', xhr.status)
+        }
+      }
+    }
+    xhr.open('post', "xxx/xxx", true)
+    var from = document.getElementById('myForm')
+    xhr.send(new FormData(from))
+  </script>
+
+
+  <h1>超时设定</h1>
+  xhr中提供了timeout属性，用来设置超时时间
+  表示在请求响应多少毫秒之后就终止
+  例如：
+  <script>
+    var xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        try {
+          if (xhr.status >= 200 && xhr.status < 300 || xhr == 304) {
+            console.log("请求完成", xhr.responseText)
+          } else {
+            console.log('请求失败', xhr.status)
+          }
+        } catch (ex) {
+          // 
+        }
+      }
+    }
+    xhr.open('get', 'xxx/xxx', true)
+    xhr.timeout = 1000 // 1秒钟
+    xhr.ontimeout = function () {
+      console.log('请求超时')
+    }
+    xhr.send(null)
+  </script>
+  这段代码就表示如果请求在1秒钟内没有返回 就会自动终止，请求终止时会调用ontimeout时间处理程序，但是此时readyState可能已经变成4了了，这意味着会调用onreadystatechange
+  事件处理程序，可是如果在超时终止请求之后再访问status属性，就会导致错误，为了避免浏览器报错，将检查status属性的语句封装到try-catch语句中
+</body>
+
+</html>

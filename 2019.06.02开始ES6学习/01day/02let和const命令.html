@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>let和const</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * es6新增了let命令，用于声明变量，语法和var类似
+     * 但是let声明的变量不会有变量的提成，并且只在let命令所在的代码块内有效
+     *举个例子
+     */
+    {
+      let a = 1
+      var b = 2
+    }
+    // console.log(a) // Uncaught ReferenceError: a is not defined
+    // console.log(b) // 2
+
+    // var
+    //console.log(c) // undefined
+    var c = 3
+
+
+    //let
+    //console.log(d) // Uncaught ReferenceError: Cannot access 'd' before initialization
+    let d = 4
+
+    /**
+     * 有一个暂时性死区的概念
+     * 
+     * ES6 明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。
+     * 举个例子
+    */
+    var smd = 'smd'
+    if (1) {
+      // console.log(smd) //Uncaught ReferenceError: Cannot access 'smd' before initialization
+      let smd = 'abc'
+    }
+
+
+    /**
+     *
+     * 并且let不允许在相同作用域内重复声明一个变量
+     * 举个例子
+    */
+    function test(type) {
+      // let type = 'aaa' //Uncaught SyntaxError: Identifier 'type' has already been declared
+    }
+
+
+    /**
+     *
+     * 块级作用域
+     *
+     *
+     * es5中只有全局作用域和函数作用域
+     * es6中的let其实就是为JavaScript提供了块级作用域
+    */
+
+    /**
+     *
+     * const命令
+     * const声明一个只读的常量，一旦声明，常量的值就不能改变
+     *举个例子
+    */
+    const xiaoming = 'my name is xiaoming'
+    // xiaoming = '我叫小明' //Uncaught TypeError: Assignment to constant variable.
+    //给const声明的变量赋值是会报错的，并且const声明的变量，一经声明就应该立马赋值
+    /*
+    本质：其实const保证的并不是变量的值不得改动，而是变量指向的那个内存地址不能改动
+    */
+
+
+
+    /***
+     *
+     * ES6中共有6种声明变量的方法
+     *
+     * var function let const class import5
+     *
+    */
+  </script>
+</body>
+
+</html>

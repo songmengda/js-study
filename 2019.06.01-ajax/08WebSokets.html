@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax与comet</title>
+</head>
+
+<body>
+  <h1>Web Sockets</h1>
+  Web Sockets 是Comet的一个接口，就像SSE一样。
+  它的目标是在一个单独的持久连接上提佛那个全双工，双通信。
+  在JavaScript中创建了web socket 之后，会有一个http请求发送到浏览器以发起连接，在得到服务器响应之后，建立的连接就会使用HTTP升级从HTTP协议交换为webSocket协议
+  。也就是说标准的http服务器无法实现web socket 只有支持这种协议的专门服务器才能正常工作。
+  由于web Sockets使用了自定义的协议，所以URL模式也略有不同，未加密的连接不再是http:// 而是ws:// ；加密的连接也不是https：// 而是wss：//
+  使用websocket url时，必须带着这个模式，因为将来还有可能支持其他模式。
+  自定义协议的好处是（区分于http协议），能够在客户端和服务器之间发送非常少量的数据，二部比担心http那样字节级的开销。由于传递的数据包很小，因此web socket非常适合移动应用
+  毕竟对移动应用而言，带宽和网络延迟都是关键问题。自定义协议的缺点在于，制订协议的时间比指定JavaScript api的事件还要长。web socket曾几度个签，就因为
+  不断有人发现这个新协议存在一致性和安全性的问题。
+
+
+  <script>
+    // web socketAPI
+    // 创建Web Socket 
+    var socket = new WebSocket('ws://xxx/xxx') // 传入的url必须是绝对url 同源策略对websocket不适用，因此可以通过它打开任何站点的连接，至于是否会与某个域中的页面通信
+    // 完全取决于服务器
+    /**
+     *
+     * 实例化了WebSocket对象之后，浏览器就会马上尝试创建连接
+     * WebSocket.OPENING（0）：正在创建连接
+     * WebSocket.OPEN(1)：已经建立了连接
+     * WebSocket.CLOSING(2)：正在关闭连接
+     * WebSocket.CLOSE（3）：已经关闭了连接
+    */
+  </script>
+  发送和接收数据
+  <script>
+    var socket = new WebSocket('ws://xxx/xxx')
+    socket.send('我爱你')
+  </script>
+  注意WebSocket只能通过连接发送纯文本数据，所以对于发咋的数据结构，在通过建立发送之前，必须进行过序列化，可以使用JSON.stringify()进行转换
+
+  当服务器像客户端发来消息时，会触发message方法
+  <script>
+    socket.onmessage = function (res) {
+      console.log(res.data)
+    }
+  </script>
+</body>
+
+</html>

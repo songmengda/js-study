@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax与comet</title>
+</head>
+
+<body>
+  <h1>Comet</h1>
+  JavaScript框架Dojo创始人Alex Russell发明了一个词 叫Comet，指的是一种更高级的ajax技术，也有人把这个叫服务器推送
+  因为ajax是从页面向服务器请求数据的技术，而comet是一种服务器想页面推送数据的技术，Comet能够让信息近乎实时的被推送到页面上，非常适合处理一些实时的东西，比如股票
+  有两种实现Comet的方式：长轮询和流。
+  一：
+  短轮询：是浏览器发送一个请求，然后服务器进行响应，过一个时间周期，浏览器再发送一次请求，然后服务器进行响应，以此重复
+  长轮询：是页面发起一个到服务器的请求，然后服务器一直保持连接打开，直到有数据可发送，发送完数据之后，浏览器关闭连接，随即再发起一个到服务器的新请求，注意是随即就发送
+
+  两者最大的区别在于服务器在何时发送数据回来。只要使用xhr和settimeout就能实现
+
+
+  二：
+  http流：流不同于短轮询和长轮询，因为他在页面整个生命周期内只使用一个http连接，也就是说浏览器向服务器发送一个请求，而服务器保持连接打开，然后周期性的向浏览器发送数据
+  所有服务器端语言都支持打印到输出缓存然后刷新（将输出缓存中的内容一次性全部发送到客户端）的功能。这就是http流的关键。
+  在浏览器中通过监听readystatechange事件及检测readyState的值是否为3，就可以利用xhr对象实现http流，因为随着不断从服务器接收数据，readyState的值会周期性的变为3
+  ，当readyState值为3时，responseText属性中就会保存接收到的所有数据，此时，就需要比较此前接收到的数据，决定从什么位置取得最新的数据
+
+
+  <h1>服务器推送事件</h1>
+  SSE：它是围绕着只读Comet交互退出的Apo或者模式，SSE API 用于创建到服务器的单项链接，服务器通过这个链接可以发送任意数量的数据，服务器响应的MIME类型必须是text/event-stream,
+  而且是浏览器中的JavaScriptAPI能解析格式输出，SSE支持短轮询长轮询和http流。而且能在断开连接时自动确定何时重新链接。有了这么简单实用的api，再实现comet就容易多了
+  SSE API：
+  预定新的事件流，首先要创建一个新的EcentSource对象
+  <script>
+    var soure = new EventSource('smd/index')
+  </script>
+  传入的url必须与创建对象的页面同源（非跨域），EventSource的实例有一个readyState属性
+  0表示正在链接到服务器。
+  1表示打开了链接
+  2表示关闭了链接
+  三个事件
+  open：建立连接时触发。
+  message：从服务器接收到新事件时触发
+  error：在无法建立连接时触发
+  <script>
+    soure.onmessage = function (res) {
+      console.log(res.data)
+      // 服务器返回的数据放在res.data中
+    }
+  </script>
+  默认情况下EventSource对象会保持与服务器的连接活动，如果断开了，还会重新连接，这就一位置SSE适合长轮询和HTTP流。如果想关闭 可以调用close（）方法
+
+</body>
+
+</html>

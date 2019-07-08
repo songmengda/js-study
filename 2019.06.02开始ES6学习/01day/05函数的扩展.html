@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>函数的扩展</title>
+</head>
+
+<body>
+  <h1>es6引入了rest参数的概念</h1>
+  rest参数就是(...变量名) 这种形式的写法，用于获取函数的多余参数，我们知道，如果一个给一个函数传入多个参数，在函数体内可以使用arguments对象去获取
+  而rest参数搭配的变量是一个数组，该变量将多余的参数放到其中（注意是多余的参数，这就意味着，它是形参内的最后一个参数，后边不可以再有别的形参了）
+  举个例子:
+  <script>
+    function test(...arr) {
+      let [name, age] = arr
+      console.log(name, age)
+    }
+    test('小明', 20) //小明 20
+  </script>
+
+  <h1>箭头函数</h1>
+  es6允许使用箭头 (=>)定义函数
+  <script>
+    var f = v => v; //没错这就是个函数  它等价于
+
+    function f(v) {
+      return v
+    }
+
+    //如果箭头函数不需要形参 就用()代替形参的位置
+    var f = () => 5;
+  </script>
+  注意事项：
+  （1）函数体内的this对象，就是定义时所在的对象，而不是使用时所在的对象。
+
+  （2）不可以当作构造函数，也就是说，不可以使用new命令，否则会抛出一个错误。
+
+  （3）不可以使用arguments对象，该对象在函数体内不存在。如果要用，可以用 rest 参数代替。
+
+  （4）不可以使用yield命令，因此箭头函数不能用作 Generator 函数。
+
+  this指向的固定化，并不是因为箭头函数内部有绑定this的机制,实际原因是箭头函数根本没有自己的this,导致内部的this就是外层代码块中的this,也正是因为没有this,所以他不能用作构造函数
+  请问下面代码中有几个this
+  <script>
+    function foo() {
+      return () => {
+        return () => {
+          return () => {
+            console.log('id:', this.id);
+          };
+        };
+      };
+    }
+    // 答案是一个  就是foo函数中的this
+  </script>
+
+
+  <h1>尾调用优化</h1>
+  什么是尾调用?
+  尾调用是函数式编程的重要概念，就是指某个函数最后一步是调用另一个函数
+  <script>
+    function f(x) {
+      return g(x);
+    }
+  </script>
+  上面代码中，函数f的最后一步是调用函数g，这就叫尾调用。
+
+  尾调用优化:
+  尾调用之所以与其他调用不同，就在于它的特殊的调用位置。
+  我们知道，函数调用会在内存形成一个“调用记录”，又称“调用帧”（call
+  frame），保存调用位置和内部变量等信息。如果在函数A的内部调用函数B，那么在A的调用帧上方，还会形成一个B的调用帧。等到B运行结束，将结果返回到A，B的调用帧才会消失。
+  如果函数B内部还调用函数C，那就还有一个C的调用帧，以此类推。所有的调用帧，就形成一个“调用栈”（callstack）。
+
+  尾调用由于是函数的最后一步操作，所以不需要保留外层函数的调用帧，因为调用位置、内部变量等信息都不会再用到了，只要直接用内层函数的调用帧，取代外层函数的调用帧就可以了。
+
+  <script>
+    function f() {
+      let m = 1;
+      let n = 2;
+      return g(m + n);
+    }
+    f();
+
+    // 等同于
+    function f() {
+      return g(3);
+    }
+    f();
+
+    // 等同于
+    g(3);
+  </script>
+  上面代码中，如果函数g不是尾调用，函数f就需要保存内部变量m和n的值、g的调用位置等信息。但由于调用g之后，函数f就结束了，所以执行到最后一步，完全可以删除f(x)的调用帧，只保留g(3)的调用帧。
+
+  这就叫做“尾调用优化”（Tail call optimization），即只保留内层函数的调用帧。如果所有函数都是尾调用，那么完全可以做到每次执行时，调用帧只有一项，这将大大节省内存。这就是“尾调用优化”的意义。
+
+  注意，只有不再用到外层函数的内部变量，内层函数的调用帧才会取代外层函数的调用帧，否则就无法进行“尾调用优化”。
+
+
+  <h1>尾递归</h1>
+  函数调用自身，称为递归。如果尾调用自身，就称为尾递归。
+
+  递归非常耗费内存，因为需要同时保存成千上百个调用帧，很容易发生“栈溢出”错误（stack overflow）。但对于尾递归来说，由于只存在一个调用帧，所以永远不会发生“栈溢出”错误。
+  <script>
+    function factorial(n) {
+      if (n === 1) return 1;
+      return n * factorial(n - 1);
+    }
+
+    factorial(5) // 120
+  </script>
+  上面代码是一个阶乘函数，计算n的阶乘，最多需要保存n个调用记录，复杂度 O(n) 。
+
+  如果改写成尾递归，只保留一个调用记录，复杂度 O(1) 。
+  <script>
+    function factorial(n, total) {
+      if (n === 1) return total;
+      return factorial(n - 1, n * total);
+    }
+
+    factorial(5, 1) // 120
+  </script>
+  由此可见，“尾调用优化”对递归操作意义重大，所以一些函数式编程语言将其写入了语言规格。ES6 亦是如此，第一次明确规定，所有 ECMAScript 的实现，都必须部署“尾调用优化”。这就是说，ES6
+  中只要使用尾递归，就不会发生栈溢出（或者层层递归造成的超时），相对节省内存。
+
+
+  函数式编程有一个概念，叫做柯里化（currying），意思是将多参数的函数转换成单参数的形式。这里也可以使用柯里化。
+  <script>
+    function currying(fn, n) {
+      return function (m) {
+        return fn.call(this, m, n);
+      };
+    }
+
+    function tailFactorial(n, total) {
+      if (n === 1) return total;
+      return tailFactorial(n - 1, n * total);
+    }
+
+    const factorial = currying(tailFactorial, 1);
+
+    factorial(5) // 120
+  </script>
+  上面代码通过柯里化，将尾递归函数tailFactorial变为只接受一个参数的factorial。
+
+  <script>
+    function factorial(n, total = 1) {
+      if (n === 1) return total;
+      return factorial(n - 1, n * total);
+    }
+
+    factorial(5) // 120
+  </script>
+  上面代码中，参数total有默认值1，所以调用时不用提供这个值。
+
+  总结一下，递归本质上是一种循环操作。纯粹的函数式编程语言没有循环操作命令，所有的循环都用递归实现，这就是为什么尾递归对这些语言极其重要。对于其他支持“尾调用优化”的语言（比如
+  Lua，ES6），只需要知道循环可以用递归代替，而一旦使用递归，就最好使用尾递归。
+
+</body>
+
+</html>

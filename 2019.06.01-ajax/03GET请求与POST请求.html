@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax与comet</title>
+</head>
+
+<body>
+  <h1>GET请求</h1>
+  get请求是最常见的请求类型，最常见与向服务器查询某些信息，必要时，可以将查询字符串参数追加到url的末尾，以便将信息发送给服务器。
+  对于xhr而言，就是在send（）方法里边传入值，但是这个值应该经过正确的编码，强烈建议使用encodeURIComponent（）进行编码
+  例子：
+  <script>
+    var xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status >= 200 && xhr.status < 300 || xhr == 304) {
+          console.log("请求完成", xhr.responseText)
+        } else {
+          console.log('请求失败', xhr.status)
+        }
+      }
+    }
+    function addURIParam(url, name, value) {
+      url += (url.indexOf('?')) == -1 ? "?" : '&';
+      url += encodeURIComponent(name) + "=" + encodeURIComponent(value)
+      return url
+    }
+    var url = 'xxx/xxx'
+    url = addURIParam(url, "name", "Lili")
+    url = addURIParam(url, "age", "18")
+    xhr.open("get", url, false)
+    xhr.send(null)
+  </script>
+
+
+  <br>
+  <h1>POST请求</h1>
+  post请求的使用频率仅次于get，通常使用与向服务器发送应该被保存的数据。
+  关于post请求和get请求的区别，为在另一篇文章中有提到过<a href="https://blog.csdn.net/qq_40028324/article/details/84583051">关于post和get的区别</a>
+
+  默认情况下，服务器对post请求和提交web表单的请求不会一视同仁，因此服务器端必须有程序来读取发送过来的原始数据，并从中解析出有用的部分。
+  不过我们可以使用xhr来模仿表单提交，
+  第一步：现将Content-type 头部信息设置为application/x-www-form-urlencoded 也就是表单提交时的内容类型
+  第二步：以适当的格式创建一个字符串，字符串的格式与查询字符串格式相同，所以需要先将表单数据进行序列化，然后再通过xhr发送到服务器。
+
+
+</body>
+
+</html>

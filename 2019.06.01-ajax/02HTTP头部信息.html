@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax与comet</title>
+</head>
+
+<body>
+  <h1>HTTP头部信息</h1>
+  每个http请求和响应都会带有响应的头部信息,其中有的对开发人员有用，有的也没什么用。XHR对象也提供了操作这两种头部（及响应头和请求头）信息的方法
+  在默认情况下，在发送XHR请求的同时，还会发送一下头部信息
+  <ul>
+    <li>Accept：浏览器能够处理的内容类型</li>
+    <li>Accept-Charset:浏览器能够显示的字符集</li>
+    <li>Accept-Encoding：浏览器能够处理的压缩编码</li>
+    <li>Accept-Language:浏览器当前设置的语言</li>
+    <li>connection：浏览器与服务器之前连接的类型</li>
+    <li>Cookie：当前页面设置的任何cookie</li>
+    <li>Host：发出请求的页面所在的域</li>
+    <li>Referer：发出请求的页面URI。（其实是HTTP规范把这个头部字段拼写错了，但是为了保证与规范一直，就将错就错吧 这个单词正确的拼写应该是referrer）</li>
+    <li>User-Agent：浏览器的用户代理字符串</li>
+  </ul>
+  虽然不同的浏览器实际发出的头部信息会有所不同，但是上边的这几个基本上是所有浏览器都会发送的。使用setRequestHeader（）方法可以设置自定义的请求头部信息。
+  这个方法接收两个参数，头部字段的名称和头部字段的值。并且有一点 需要在调用open（）方法之后，send（）方法调用之前调用setRequestHeader（）
+  比如：
+  <script>
+    var xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status >= 200 && xhr.status < 300 || xhr == 304) {
+          console.log("请求完成", xhr.responseText)
+        } else {
+          console.log('请求失败', xhr.status)
+        }
+      }
+    }
+    xhr.open('get', 'xxx/xxx', true)
+    xhr.setRequestHeader("HeaderName", 'smd')
+    xhr.send(null)
+  </script>
+
+  这个setRequestHeader（）方法，有的浏览器允许开发人员重新默认头部信息，有的浏览器不允许。所以我们如果和服务器交互的时候有这种需求尽量还是使用自定义的字段名称。
+
+  既然我们可以通过setRequestHeader（）方法去写发送的头部信息，那么肯定也有获取响应头部信息的方法
+  <ul>
+    <li>getResponseHeader()：接收头部字段名称，获取对应的值</li>
+    <li>getAllResponseHeaders()：获取包含所有头部信息的长字符串</li>
+  </ul>
+</body>
+
+</html>

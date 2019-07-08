@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax与comet</title>
+</head>
+
+<body>
+  <h1>跨域资源共享</h1>
+  通过xhr实现ajax通信的主要限制，就是浏览器的同源策略了，默认情况下，xhr对象只能访问同域的资源。
+  cors是W3C制定的一个工作草案，定义了必须访问跨域资源时，浏览器和服务器应该怎么通信。CORS背后的思想，就是使用自定义的http头部让浏览器与服务器进行沟通
+  ，从而决定应该允许还是拒绝。
+
+  例如：使用get或者post发送请求时，没有自定义的头部，而主体内容是text/plain。在发送该请求时，需要给他附加一个额外的origin头部，其中包含请求页面的源信息
+  （协议，域名，端口），以便服务器根据这个头部信息来决定是否给予响应
+  如果服务器认为这个请求可以接受，就在Access-Control-Allow-Origin头部中回发相同的源信息(如果是公共资源，可以回发“*”)
+  如果没有这个头部，或者有这个头部但源信息不匹配，浏览器就会驳回请求，正常情况下，浏览器会处理请求。 请求和响应都不包含cookie信息。
+
+  除了ie浏览器之外。其他浏览器和设备内置浏览器都通过XHRHttpRequest对象实现了对cors的原始支持（ie不研究了），在尝试打开不同来源的资源时，
+  无需额外编写代码就可以出发这个行为，要请求位于另一个域中的资源，使用标准的xhr对象并在open（）方法中传入绝对url即可，
+  通过跨域xhr对象可以访问status和statusText属性，而且支持同步请求，跨域xhr对象也有一些限制：
+  <ul>
+    <li>不能使用setRequestHeaders（）设置自定义头部</li>
+    <li>不能发送和接收cookie</li>
+    <li>调用getAllResponseHeaders（）方法会返回空字符串</li>
+  </ul>
+
+
+  cors通过一种叫做Preflighted Reqeusts的透明服务器验证机制支持开发人员使用自定义的头部、get或post之外的方法，以及不同类型的主体内容，在使用下列高级选项
+  来发送请求时，就会想服务器发送一个Preflight请求。这种请求使用options方法，发送下列头部
+  <ul>
+    <li>Origin：与简单的请求相同</li>
+    <li>Access-Control-Request-Method：请求资深使用的方法</li>
+    <li>Access-Control-Request-Headers：自定义的头部信息，多个头部以逗号分隔</li>
+  </ul>
+
+  <h1>带凭据的请求</h1>
+  默认情况下，跨域请求是不提供凭据的（cookie、http认证及客户端SSL证明等），通过将withCredentials属性设置为true，可以指定某个请求应该发送凭据。如果
+  浏览器接受带凭据的请求，会用下边这个http头部来响应。
+  Access-control-Allow-Credentials：true
+  如果发送的是带凭据的请求，但服务器的响应中没有包含这个头部，那么浏览器就不会把响应交给JavaScript（于是，responsText中将是空字符串，status的值将是0，而且会调用onerror（）
+  事件处理程序）。另外，服务器还可以在Oreflight响应中发送这个http头部，表示允许源发送带凭据的请求。
+
+
+  <h1>其他实现跨域访问的技术</h1>
+  在cors出现以前 ，要实现跨域ajax通信还是要非很大劲的。比如利用dom中能够执行跨域请求的功能，在不依赖xhr对象的情况下也能发送某种请求，虽然cors技术以及无处不在了
+  但是大家自己发明的这些技术仍然被广泛的使用，毕竟这样做不需要修改服务器的代码。
+  1.图像ping
+  我们知道html中img标签可以加载图片，src可以是随意的图片地址，不用考虑跨域问题。
+  2.jsonp
+  json数据我们知道 格式是这样的{"name":"xiaoming"}
+  jsonp看起来与json差不多，只不过是被包含在函数调用中的json就像这种callback({"name":"xiaoming"})
+  jsonp由两部分组成：回调函数和数据
+  它是通过动态创建script标签元素来使用的，指定其src为请求的地址，后边拼上回调函数。
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Ajax与comet</title>
+</head>
+
+<body>
+  <h1>XHR用法</h1>
+  <div>
+    2005年 一位老外发表了一篇在文章。里边介绍了一种技术，用他的话说 就叫ajax 他是Asyncchronous JavsScript+XML的缩写
+    这一技术能够向服务器请求额外的数据 而不用卸载页面，可以带来更好的用户体验。Ajax的技术核心是XMLHttpRequest对象。
+
+    <br>
+    XHR的用法：
+    在使用xhr对象时 第一个要调用的方法就是open() 它接收三个参数:
+    <ul>
+      <li>要发送的请求的类型（get、post）</li>
+      <li>请求的url</li>
+      <li>表示是否异步发送请求的布尔值</li>
+    </ul>
+    <script>
+      var xhr = new XMLHttpRequest()
+      xhr.open('get', 'xxx/xxxx', false)
+    </script>
+    这样就可以指明本次将对xxx/xxx地址发送一个get请求，注意此时open方法不会真正的发送请求，只是启动一个请求以备发送。
+    要发送特定的请求 必须调用send方法
+    <script>
+      var xhr = new XMLHttpRequest()
+      xhr.open('get', 'xxx/xxxx', false)
+      xhr.send(null)
+    </script>
+    这里的send接收一个参数，即要作为请求主体发送的数据。如果不需要通过请求主体发送数据，则必须传入null，因为这个参数对于浏览器来说是必须的
+    由于这次请求是同步的，js代码会等到服务器响应之后再继续执行。收到响应后，响应的数据会自动填充到xhr对象的属性
+    <ul>
+      <li>responseText:作为响应主体被返回的文本</li>
+      <li>responseXML:如果响应的内容类型是“text/xml”或者“application/xml”,这个属性中将保存包含着相应数据的XML DOM文档</li>
+      <li>status:响应的HTTP状态</li>
+      <li>statusText:HTTP状态的说明</li>
+    </ul>
+    在接到响应后 ，第一步是检查status属性 已确定响应已成功返回。一般来说，可以将http状态码200作为成功的标志,此时responseText属性的内容以及就绪。而且在内容类型正确的情况
+    下，responseXML也应该能够访问了。 此外除了200还有状态码为304标识请求的资源并没有被修改。可以直接使用浏览器缓存的版本，当然也意味着响应式有效的。
+    所以应该检查者两个状态码
+    <script>
+      var xhr = new XMLHttpRequest()
+      xhr.open('get', 'xxx/xxxx', false)
+      xhr.send(null)
+      if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+        console.log('请求成功', xhr.responseText)
+      } else {
+        console.log('请求失败', xhr.status)
+      }
+    </script>
+    虽然我们这样发送同步请求没有问题。但是我们知道 ，使用ajax请求更多的还是要发送异步的，才能不影响后边js代码的执行。当使用异步请求时，要监听请求完成，就要使用readyState属性了
+    该属性表示请求/响应过程的当前活动阶段。这个属性的取值如下:
+    <ul>
+      <li>0:未初始化，尚未调用open（）方法</li>
+      <li>1:启动,已经调用open（）方法，但是尚未调用send（）方法</li>
+      <li>2：发送，已经调用send方法，但尚未接收到响应</li>
+      <li>3：接收，已经接收到部分响应数据</li>
+      <li>4：完成，已经接收到全部响应数据，而且已经可以在客户端使用了</li>
+    </ul>
+    只要readyState属性从一个值变成雷一个值 都会触发一次readystatechange事件，可以利用这个时间来检测每次状态变化后readstate的值，通常情况下，我们只对readystate值为4的阶段感兴趣
+    因为这时所有数据都已经就绪。不过在调用open（）之前应该先指定onreadystatechange事件处理程序才能保证浏览器的兼容性
+    <script>
+      var xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status >= 200 && xhr.status < 300 || xhr == 304) {
+            console.log("请求完成", xhr.responseText)
+          } else {
+            console.log('请求失败', xhr.status)
+          }
+        }
+      }
+      xhr.open('get', 'xxx/xxx', true)
+      xhr.send(null)
+    </script>
+
+</body>
+
+</html>

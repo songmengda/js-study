@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>变量的结构赋值</title>
+</head>
+
+<body>
+  <h1>数组的结构赋值</h1>
+  ES6允许按照一定的模式从数组和对象中取值，然后对变量进行赋值，这种被称为结构赋值
+  <script>
+    /**
+     *
+     * 以前为变量赋值只能挨个赋值
+     *
+    */
+    let a1 = 1;
+    let b1 = 2;
+    let c1 = 3;
+    //现在es6允许这样写
+    let [a2, b2, c2] = [4, 5, 6]  //表示从数组中取值，按照对应的位置对变量赋值。 这种写法属于【匹配模式】, 只要等号两边的模式相同，左边的变量就会被赋予对应的值
+    console.log(a2, b2, c2) // 4 5 6
+
+
+    /*
+      除了这种写法  还支持默认赋值
+      并且es6内部使用严格相等符号===
+    */
+    let [a3 = 1] = []
+    console.log(a3) // 1
+  </script>
+
+
+
+  <h1>对象的结构赋值</h1>
+  用于结构赋值的不仅仅是数组结构， 还可以是对象结构 （数组也是对象）
+  <script>
+    /**
+     * 对象的解构赋值和数组的解构赋值有一个重要的不同 ，数组的元素是按照次序排列的（有序的），所以变量的取值由它的位置决定，
+     * 而对象的属性没有次序，变量必须与属性名相同
+     * 
+     * 
+    */
+    let { name, age } = { name: '小明', age: '18' }
+    console.log(name, age) // 小明 18
+    /*
+      如果变量不想与属性名相同  可以这样写
+    */
+    let { aaa: changeAaa } = {
+      aaa: '我是aaa'
+    }
+    console.log(changeAaa) //我是aaa
+  </script>
+
+
+  <h1>字符串的解构赋值</h1>
+  字符串也可以解构赋值，因为字符串被转换成了一个类似数组的对象
+  <script>
+    const [a4, a5, a6] = '123'
+    console.log(a4, a5, a6) //1  2   3
+
+    //类似数组的对象都有一个lenght属性
+    const [length] = '1234'
+    console.log(length) //1
+  </script>
+
+
+  <h1>解构赋值的用途</h1>
+  <script>
+    /**
+     * 1.交换变量的值
+     * */
+    let x1 = 1;
+    let y1 = 2; // 这个地方如果不写分号会报错
+    [x1, y1] = [y1, x1]
+    console.log(x1, y1)
+
+
+    /**
+     * 2.从函数返回多个值
+     * 
+     * 因为函数只能返回一个值，如果需要返回多个值，就需要把他们放到对象中或者数组中。
+     * 有了解构赋值，取这些值就非常方便了
+     * */
+    function test1() {
+      return [1, 2, 3, 4]
+    }
+
+    let [s1, s2, ...s3] = test1()
+    console.log(s1, s2, s3) // 1 2 [3,4]
+
+    function test2() {
+      return { name1: '小明', age1: 20 }
+    }
+    let { name1, age1 } = test2()
+    console.log(name1, age1) // 小明  20
+
+    /**
+     * 3.函数参数的定义
+     * a.函数的参数是有次序的
+     * b.函数的参数是无次序的
+    */
+    function a([a, b, c]) { }
+    a([1, 2, 3])
+    function b({ a, b, c }) { }
+    b({ a: '小明', b: '男', c: '90' })
+
+
+    /**
+     * 4.提取json中的数据
+     *一般请求接口数据时  可以使用解构赋值来获取res的值
+    */
+
+
+    /**
+     * 5.函数参数的默认值
+     * 
+    */
+    let jQuery = {}
+    jQuery.ajax = function (url, {
+      async = true,
+      beforeSend = function () { },
+      cache = true,
+      complete = function () { },
+      crossDomain = false,
+      global = true,
+      // ... more config
+    } = {}) {
+      // ... do stuff
+    };
+
+    /**
+     * 6.遍历Map结构
+     * */
+
+    const map = new Map();
+    map.set('name1', '小明');
+    map.set('name2', '小刚');
+    console.log(map)
+    for (let [key, value] of map) {
+      console.log(key, value)
+    }
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>es6简介</title>
+</head>
+
+<body>
+  <h1>部署进度</h1>
+  JavaScript可以在哪些环境中运行？
+  1.浏览器环境
+  -各大浏览器最新版本对es6的支持，随着时间的推移支持度越来越高，超过90%的es6语法特性都实现了
+  2.Node
+  -node是JavaScript的服务器运行环境
+  可以在终端执行 node --v8-options | grep harmony
+  目前我这里有以下提示信息
+  node --v8-options|grep harmony
+  --es_staging (enable test-worthy harmony features (for internal use only))
+  --harmony (enable all completed harmony features)
+  --harmony_shipping (enable all shipped harmony features)
+  --harmony_array_prototype_values (enable "harmony Array.prototype.values" (in progress))
+  --harmony_function_sent (enable "harmony function.sent" (in progress))
+  --harmony_do_expressions (enable "harmony do-expressions" (in progress))
+  --harmony_class_fields (enable "harmony public fields in class literals" (in progress))
+  --harmony_promise_finally (enable "harmony Promise.prototype.finally" (in progress))
+  --harmony_number_format_to_parts (enable "Intl.NumberFormat.prototype.formatToParts" (in progress))
+  --harmony_plural_rules (enable "Intl.PluralRules" (in progress))
+  --harmony_function_tostring (enable "harmony Function.prototype.toString")
+  --harmony_regexp_named_captures (enable "harmony regexp named captures")
+  --harmony_regexp_property (enable "harmony Unicode regexp property classes")
+  --harmony_restrict_constructor_return (enable "harmony disallow non undefined primitive return value from class "
+  "constructor")
+  --harmony_dynamic_import (enable "harmony dynamic import")
+  --harmony_async_iteration (enable "harmony async iteration")
+  --harmony_strict_legacy_accessor_builtins (enable "treat __defineGetter__ and related functions as strict")
+  --harmony_restrictive_generators (enable "harmony restrictions on generator declarations")
+  --harmony_object_rest_spread (enable "harmony object rest spread properties")
+  --harmony_sharedarraybuffer (enable "harmony sharedarraybuffer")
+  --harmony_regexp_dotall (enable "harmony regexp dotAll flag")
+  --harmony_regexp_lookbehind (enable "harmony regexp lookbehind")
+  --harmony_template_escapes (enable "harmony invalid escapes in tagged template literals")
+
+  使用es-checker 可以查看所有浏览器对es6的支持程度
+  1.安装npm install -g checker
+  2.运行es-checker
+  =========================================
+  Passes 38 feature Detections
+  Your runtime supports 90% of ECMAScript 6
+  =========================================
+
+
+  <h1>babel转码器</h1>
+  babel可以将es6代码转换为es5代码，从而在浏览器或者其他环境中可以执行
+  比如 箭头函数 Array.forEach(item=> item+1)
+  经过转码之后就变成了 Array.forEach(function(item){return item+1})
+
+  需要安装的依赖是：$ npm install --save-dev @babel/core
+
+  <h1>配置.babelrc</h1>
+  Babel的配置文件是.babelrc文件，存放于项目的根目录下。使用babel的第一步就是配置该文件。
+  作用：设置转码规则和插件，
+  {
+  "presets":[],
+  "plugins":[]
+  }
+  -presets设定转码规则
+  # 最新转码规则
+  $ npm install --save-dev @babel/preset-env
+  # react 转码规则
+  $ npm install --save-dev @babel/preset-react
+  然后，将这些规则加入.babelrc。
+  {
+  "presets": [
+  "@babel/env",
+  "@babel/preset-react"
+  ],
+  "plugins": []
+  }
+
+</body>
+
+</html>
