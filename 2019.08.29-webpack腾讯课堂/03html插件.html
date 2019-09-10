@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+  目前为止  可以在build文件夹新建index.html
+  引入打包后的js  发现是可以运行的  但是希望使用ip访问
+
+
+  此时  可以安装webpack-dev-server -D 来安装一个服务   该服务是express。。。。。
+  
+  安装完成后   使用npx webpack-dev-server来启动    访问localhost8080  （它并不会真正打包文件   而是在内存中 进行了打包输出）
+
+
+  启动完服务之后  可以发现进入到了目录结构中  我们希望直接打开index.html?
+  在package。json中  配置dev:webpack-dev-server
+  在webapck.config.js中 新增devServer对象 port属性可以指定端口号  progress 可以显示进度条  contentBase:'./build'找文件夹  open:true 启动之后自动打开浏览器
+
+
+  在此之前  都是手动建了一个html    如果希望自动生成一个html  就需要一个插件HtmlWebpackPlugin
+  1.安装  npm i html-webpack-plugin -D
+  2.在webpack.config.js中 新增plugins属性  他 是一个数组   存放着所有的插件,  
+  3.new HtmlWebpackPlugin({
+      template: './src/index.html', //以什么作为模板
+      filename: 'index.html', // 生成的文件名字叫什么
+      minify: {
+        removeAttributeQuotes: true, //删除双引号
+        collapseWhitespace: true // 折叠空行
+      },
+      hash:true, // 在html引用的资源文件后边跟hash
+  })
+  4.此外  还可以在output filename中  这样写   bundle.[hash].js 打包后的js也会带上hash   如果写成[hash:8]表示只表示8位
+
+
+
+
+
+
+
+ -->
+</body>
+
+</html>

@@ -29,6 +29,17 @@
         path: path.resolve(__dirname, 'build'), // path是node的核心内置模块 不需要安装  这里的路径必须是一个绝对路径  __dirname 表示在当前目录下生成一个bundle.js
       }
     } -->
+
+
+  如果把webpack.config.js 改个名字 比如叫webpack.config.my.js 再使用npx webpack 就不能运行了 这时可以 使用npx webpack --config
+  webpack.config.my.js来运行
+
+  但是这样 也是很麻烦。就可以在package.json中配置脚本
+
+  "scripts": {
+  "build": "webpack --config webpack.config.js"
+  },
+  运行 npm run build 即可打包了
 </body>
 
 </html>
