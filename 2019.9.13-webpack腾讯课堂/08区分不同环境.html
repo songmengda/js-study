@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+
+    区分环境变量 不太好 
+
+
+    区分环境比较好
+
+
+    建两个文件
+    webpack.dev.js
+    webpack.prod.js
+
+
+    同时 webpack.config.js 换成webapck.base.js
+
+
+    安装一个插件  webpack-mege
+
+
+
+    prod.js
+    let { smart } = require('webpack-merge')
+
+    let base = require('./webapck.base.js')
+
+    module.exports = smart(base, {
+      mode: 'production'
+    })
+
+
+    dev.js
+    let { smart } = require('webpack-merge')
+
+    let base = require('./webpack.base.js')
+
+    module.exports = smart(base, {
+      mode: 'development'
+    })
+
+
+
+    打包  就可了
+    
+   -->
+</body>
+
+</html>

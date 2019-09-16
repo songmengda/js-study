@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+
+    在此基础上  
+    写一个
+function* gen (parm) {
+  yield 6
+}
+console.log(gen().next())
+    发现报错了   已经es6转es5了  但是这种语法还是报错 
+
+   1. 需要使用npm i @babel/plugin-transform-runtime @babel/runtime -D
+   2. 在 "plugins": ["@babel/plugin-transform-runtime"] 新增
+   3. npm run dev    发现包里很多警告   原因是它去node_module里边去找了
+   新增两个webpack配置
+    include: path.resolve(__dirname, 'src'), // 在src下去找
+    exclude: /node_module/, // 忽略node_module
+
+
+
+    4. babel默认不会转化示例上的方法
+
+
+    比如使用 'aaa'.includes('a')
+    打完包出来还是这个
+
+    这就需要用到babel/polyfill  npm i @babel/polyfill
+
+    在项目中  js里边导入
+    require('@babel/polyfill')
+
+    npm run dev
+
+    发现 Array.prototype.includes 实现了一个
+
+
+
+
+
+    使用eslint
+
+    1.安装  npm i eslint eslint-loader -D
+    2.
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'eslint-loader'
+        },
+        enforce: 'pre' // 优先执行
+      },
+
+
+   -->
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    引入jquery
+    1.npm i jquery -D
+    2. 
+      import $ from 'jquery'
+      console.log('jquery', $)
+
+
+      但是console.log('w-jquery', window.$)
+
+    如果需要暴露给window   需要使用expose-loader  （暴露全局的loader   内联的loader）
+    pre 前面执行的loader
+    normal 普通loader
+    expose-loader 内联loader
+    postloader  后置loader
+
+    1.安装  npm i expose-loader -D 
+
+    2.引入
+
+    import $ from 'expose-loader?$!jquery' // 表示导入$ 从jquery中   并且使用expose-loader暴露到全局window上  window上的名字也叫$
+    console.log('jquery', $)
+    console.log('w-jquery', window.$)
+
+    或者不适用内联loader
+    在webpack中添加规则  表示加载jquery的时候   使用暴露loader
+      {
+        test: require.resolve('jquery'),
+        use: 'expose-loader?$' 
+      },
+
+
+    如果不想在全局上  而是在每个模块中  都注入  需要依赖webpack的一个插件
+    
+    1.let webpack = require('webpack')
+    2.
+    new webpack.ProvidePlugin(
+      { $: 'jquery' }
+    )
+    3. 在js中直接打印$
+
+
+
+
+    总结:
+
+
+    1.expose-loader 暴露到window上
+    2.providePlugin 给每个模块提供一个$
+    3.引入  不打包
+
+    
+   -->
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+  截止到现在   可以进行css打包了   但是他是在html文件中插入了一个style标签
+
+  现在我们要把样式抽离成一个文件
+  需要用到 mini-css-extract-plugin 插件
+
+  1.安装  npm i mini-css-extract-plugin
+  2.引用 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+  3.实例化这个插件  在plugins中
+    new MiniCssExtractPlugin({
+      filename: 'index.css', // 目标文件
+    })
+  4. 将style-loader删除  改写成 MiniCssExtractPlugin.loader,
+    运行 即可
+
+
+
+  5.添加浏览器前缀
+    依赖一个loader  叫做 postcss-loader  autoprefixer
+    安装 npm i postcss-loader autoprefixer -D
+    引入 需要使用postcss-loader  并且 应该先处理postcss-loader  再处理css-loader
+
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'less-loader', // 把less => css
+
+
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+    
+    这时如果运行npm run dev   会报错  说是postcss plugin 没找到
+
+    需要配置一个文件  叫做postcss.config.js   这个文件中
+    module.exports = {
+      plugins: [require('autoprefixer')({
+        "browsers": [
+          "defaults",
+          "not ie < 11",
+          "last 2 versions",
+          "> 1%",
+          "iOS 7",
+          "last 3 iOS versions"
+        ]
+      })]
+    }
+
+    再运行  就ok了
+
+
+
+    如果想压缩css 需要使用 optimize-css-assets-webpack-plugin 插件   这个插件可以压缩css  随之而来的是js不被压缩了
+
+
+
+    1.npm i optimize-css-assets-webpack-plugin -D
+    2. let OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+      新增优化项optimization属性   
+      optimization: { // 优化项
+        minimizer: [new OptimizeCSSAssetsPlugin()],
+      },
+    npm run build  你发现css被压缩了   js没有被压缩
+
+    3. let TerserJSPlugin = require('terser-webpack-plugin');
+      在优化项中新增
+        optimization: { // 优化项
+          minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin()],
+        },
+
+      npm  run build     此时css和js都被压缩
+      
+ -->
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    
+
+
+    插件
+
+    1.cleanWebpackPlugin
+    2.copyWebpackPlugin
+
+    前两个需要安装
+    3.bannerPlugin  内置的 版权声明插件
+
+    
+    清楚  再生成
+    let { CleanWebpackPlugin } = require('clean-webpack-plugin');
+     new CleanWebpackPlugin()
+
+
+
+
+     拷贝文件
+     let CopyWebpackPlugin = require('copy-webpack-plugin')
+    new CopyWebpackPlugin([
+      { from: './doc', to: '' }
+    ])
+
+
+    版权声明插件
+    let webpack = require('webpack')
+        new webpack.BannerPlugin('smd by 2019.9.14') // 会在打包后的文件头部插入这个版权声明
+   -->
+</body>
+
+</html>

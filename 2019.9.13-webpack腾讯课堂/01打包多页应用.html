@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    目录结构
+
+    1.src下    index1.js   index2.js
+    2.npm init 
+    3.npm i webpack webpack-cli
+
+    4。webpack.config.js
+
+    let path = require('path')
+    module.exports = {
+      mode: 'development',
+      entry: {
+        index1: './src/index1.js',
+        index2: './src/index2.js'
+      },
+      output: {
+        filename: '[name].[hash].js', // name表示 entry的key
+        path: path.resolve(__dirname, 'dist')
+      }
+    }
+    修改package.json   build:"webpack --config webpack.config.js"
+
+    运行 npm run build
+
+
+    5.打包到不同的html中
+    根目录新建index.html
+    插件 let HtmlWebpackPlugin = require('html-webpack-plugin')
+    使用
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        filename: 'index1.html',
+        chunks: ['index1'] // 作用是把enty中的key区分开
+      }),
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        filename: 'index2.html',
+        chunks: ['index2']
+      }),
+    ]
+
+
+   -->
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+  现在打完包的资源都在build目录下   如果想分类文件夹
+
+  图片:
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: {
+          // loader: 'file-loader'
+          loader: 'url-loader',
+          options: {
+            limit: 200 * 1024,
+            outputPath: 'img/' // 将打包好的文件放到img目录下
+          }
+        }
+      },
+
+
+  css:
+    new MiniCssExtractPlugin({
+      filename: 'css/index.css',
+    }),
+
+
+
+    如果说我们的资源  希望发布完之后  用cdn的路径
+
+    新加一个publicPath
+  output: {
+    filename: 'bundle.[hash:8].js', // 打包后的文件名
+    path: path.resolve(__dirname, 'build'), // path是node的核心内置模块 不需要安装  这里的路径必须是一个绝对路径  __dirname 表示在当前目录下生成一个bundle.js
+    // publicPath: 'http://www.zhufengpeixun.cn'
+  },
+  
+ -->
+</body>
+
+</html>

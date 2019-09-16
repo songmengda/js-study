@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    webpack-dev-server是使用exprss起了一个服务  
+
+    可以自己写一个服务端  实现跨域功能
+
+
+
+    1.新建一个server.js
+
+    // express
+    let express = require('express');
+    let app = express()
+
+    app.get('/api/user', (req, res) => {
+      res.send({ "name": '小丑' })
+    })
+    app.listen(3000)
+    
+
+    运行  就启动了一个3000端口的接口
+
+
+    2.在js中请求这个接口
+
+    let xhr = new XMLHttpRequest()
+
+
+    // 这时默认访问的是 localhost:8080 这个端口  
+  // http-proxy
+  xhr.open("GET", '/api/user', true)
+
+  xhr.onload = function () {
+    console.log(xhr.response)
+  }
+  xhr.send()
+
+
+  在webpack中做如下处理
+  devServer: { // 告诉webpack   访问/api 的时候  去http://localhost:3000上去找
+    proxy: {
+      '/api': 'http://localhost:3000'
+    }
+  },
+
+
+
+
+  但是这样呢  如果server。js的路径变了    webpack中也需要变
+
+
+  为了方便  可以这样
+
+  1.server.js
+    let express = require('express');
+    let app = express()
+
+    app.get('/user', (req, res) => { // 把/api删了
+      res.send({ "name": '小丑' })
+    })
+    app.listen(3000)
+
+
+    2.webapck
+    devServer: {
+      proxy: {
+        '/api': { // 重写的方式  把请求代理到express服务器上
+          target: 'http://localhost:3000',
+          pathRewrite: { "/api": '' }
+        }
+      }
+    },
+    -----------------------------------------------------------------
+
+
+
+    如果前端只是单纯想模拟一些数据
+
+
+    1.webpack
+    devServer: {
+      before (app) {
+        app.get('/user', (req, res) => {
+          res.send({ "name": '小丑' })
+        })
+      }
+    },
+
+    2.server.js
+    就不需要了
+
+
+
+    -----------------------------------------------------------------
+
+    有服务端  不想用代理处理   在服务端中启动webpack 端口用服务端端口
+
+    相当于在server.js中启动一个webpack
+    let express = require('express');
+    let app = express()
+
+
+    let webpack = require('webpack')
+    //中间件webpack-dev-middleware  webpack开发服务的中间件
+
+
+    let middle = require('webpack-dev-middleware');
+
+
+    let config = require('./webpack.config')
+
+    let compiler = webpack(config)
+
+
+
+    app.use(middle(compiler))
+
+    app.get('/user', (req, res) => {
+      res.send({ "name": '小丑' })
+    })
+    app.listen(3000)
+
+
+    这样 也是可以的   一共三种方式
+
+
+
+ -->
+</body>
+
+</html>

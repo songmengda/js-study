@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <!-- 
+      css配置完成了  现在处理一下es6语法
+
+      1. babel-loader @babel/core（核心模块）  @babel/preset-env 转换成标准模块
+        npm i babel-loader @babel/core @babel/preset-env -D
+
+
+      2.添加一个js规则
+      {
+        test: /.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: { // 用babel-loader 需要把es6-es5
+            presets: [
+              '@babel/preset-env'
+            ]
+          }
+        }
+      } 
+
+
+      运行npm run dev    发现函数变了
+    
+
+
+      3.如果js中有class这种语法      这是es7中的  需要另外使用 @babel/plugin-proposal-class-properties来处理
+       npm i  @babel/plugin-proposal-class-properties -D
+
+
+
+
+
+      4.写个装饰器  @log
+
+        @log; // 写个装饰器
+        class A {
+          a = 1
+        }
+
+
+        let a = new A()
+
+        console.log(a)
+
+        发现不支持   提示需要安装一个插件  npm install @babel/plugin-proposal-decorators -D
+
+
+        
+   -->
+</body>
+
+</html>

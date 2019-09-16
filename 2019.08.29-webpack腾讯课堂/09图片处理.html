@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+
+    1.想处理图片  需要引入 file-loader （作用 在内部生成一张图片  到build下  并且把图片的名字返回）
+      npm i file-loader -D
+
+    2.配置规则
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: {
+          loader: 'file-loader'
+        }
+      }
+
+    // 1.在js中创建图片引入
+    // 2.在css中使用背景图
+    import img from './i.jpg'
+
+    let image = new Image()
+    image.src = img
+    document.body.appendChild(image)
+
+    都是可以的
+ 
+    在html中引入图片就不行了  这时候需要另一个插件
+    npm i html-withimg-loader -D
+
+    同样  在规则中配置
+    {
+      test: /\.html/,
+      use: {
+        loader: 'html-withimg-loader'
+      }
+    }
+
+
+
+    把图片转换成base64
+
+
+    更多的时候   不适用fule-loader   而是url-loader 同时指定当图片大小小于一直值得时候  就转换成base64
+
+     npm i url-loader -D
+    {
+      test: /\.(png|jpg|gif)$/,
+      use: {
+        // loader: 'file-loader'
+        loader: 'url-loader',
+        options: {
+          limit: 200 * 1024
+        }
+      }
+    },
+
+ -->
+</body>
+
+</html>

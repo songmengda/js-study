@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    wbp 默认只对js进行打包处理
+
+    如果想处理css   需要进行一些loader作为辅助模块
+
+    1. 在原有基础上   src中新建一个index.css  再建一个index2.css    
+    2.在index.css中  使用@import 导入index2.css 
+    3.在src下的index.js中  require index.css
+    4.在webpack.config.js中  新增module 属性 
+    5.在module中 新增rules属性，这是一个数组  他的作用是在其中配置一些规则  loader   css-loader 可以解析@imoort这种语法   style-loader 可以把css插入到head标签中
+    （loader的特点: 
+    1.每一个loader  作用单一
+    2.loader的执行顺序是从右向左执行的
+    ）
+    6.在rules中 配置如下:{ test: /\.css$/, use: ['style-loader', 'css-loader'] }
+    7.npm i style-loader css-loader  然后npm run dev  查看效果生效
+
+    8.除了6中的配置方式   还可以配置成对象形式的
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              insert: 'head', // 不知道为什么官网写的是insertAt  
+              injectType: 'singletonStyleTag', // 官网上写的是 singleton 奶奶的
+              // "styleTag" | "singletonStyleTag" | "lazyStyleTag" | "lazySingletonStyleTag" | "linkTag"
+            }
+          },
+          'css-loader'
+        ]
+      }
+
+      9. 如果引用了less  sass  stylus预处理语言
+      需要在原来的基础上  以less为例
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              insert: 'head',
+              injectType: 'singletonStyleTag',
+              // "styleTag" | "singletonStyleTag" | "lazyStyleTag" | "lazySingletonStyleTag" | "linkTag"
+            }
+          },
+          'css-loader',
+          'less-loader', // 把less => css
+        ]
+      }
+   -->
+</body>
+
+</html>
