@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    在默认情况下   也会在node_modules文件夹中找  如果需要排除  
+    可以使用
+    exclude:/node_modules/,
+    于此相对的  还有一个include属性
+    include:path.resolve('src'), // 与exclude相对   只在。。。中找
+    rules: [
+      {
+        test: /\.js$/,
+        exclude:/node_modules/, // 忽略node_modules中的文件
+        include:path.resolve('src'), // 与exclude相对   只在。。。中找
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react'
+            ]
+          }
+        }
+      }
+    ]
+
+
+
+    安装一个库  moment  时间格式化库
+
+    sudo npm i moment
+
+    引入  
+    import moment from 'moment'
+
+    moment.locale('zh-cn')
+    let d = moment().endOf('day').fromNow()
+    console.log(d)
+
+    会发现打包出来的文件特别大  因为这个库引用 多种类型 而我们只用到了一个中文
+
+    这时是可以进行优化的  并且需要使用到一个插件,这是webpack的一个内置插件
+
+    let webpack = require('webpack')
+    new webpack.IgnorePlugin(/\.\/locale/, /moment/)
+
+
+    但是这样做 会把我们中文也忽略掉  
+    需要在使用的地方手动把语言引入一下
+    import 'moment/locale/zh-cn'
+
+
+   -->
+</body>
+
+</html>

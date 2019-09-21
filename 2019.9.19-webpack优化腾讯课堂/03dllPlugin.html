@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    动态链接库
+     sudo npm i react react-dom
+
+
+     在js中引入
+
+    import React from 'react'
+    import { render } from 'react-dom'
+
+
+    在webpack中新增
+    devServer: {
+      port: 3000,
+      open: true,
+      contentBase: './dist' // 打包后的文件放到这里s
+    },
+    
+    js
+
+    import React from 'react'
+    import { render } from 'react-dom'
+    render(<h1>喜欢睡觉</h1>, window.app)
+
+
+
+    此时一样  启动服务之后   打包后的文件还是很大
+    并不希望把react  和 react-dom打包到我们的打包文件中去
+
+
+    这里就先做了一个测试
+
+    1.新建test.js 写module.exports = '巴基大神'
+    2.新建webpack.config.react.js
+    
+
+    let path = require('path')
+
+
+    module.exports = {
+      mode: 'development',
+      entry: {
+        test: './src/test.js',
+      },
+      output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        library: 'ab', // 把打包后的文件内容  付给一个值
+        libraryTarget: 'commonjs' // 使用commonjs规范   打包完的值会变成exports["ab"]    同时还支持 umd commonjs var this...
+      }
+    }
+
+    执行  npx webpack --config webpack.config.react.js
+
+
+
+    测试写完了   继续把react和react-dom抽离出去
+
+    let webpack = require('webpack') // 需要使用webpack内置插件DllPlugin
+    module.exports = {
+      mode: 'development',
+      entry: {
+        react: ['react', 'react-dom'],
+      },
+      output: {
+        filename: '_dll_[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        library: '_dll_[name]', // 把打包后的文件内容  付给一个值
+        // libraryTarget: 'commonjs' // 使用commonjs规范   打包完的值会变成exports["ab"] 
+      },
+      plugins: [
+        new webpack.DllPlugin({
+          name: '_dll_[name]',
+          path: path.resolve(__dirname, 'dist', 'manifest.json')
+        })
+      ]
+    }
+
+
+
+
+    把manifest叫做任务清单
+
+    在index.html中   引入
+    <script src="/_dll_react.js"></script>   但是默认情况下   并不知道怎么找到这样的文件   
+    需要在webpack配置文件中
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve(__dirname, 'dist', 'manifest.json')
+    }),
+
+
+    再执行npm run dev
+
+    发现打包的文件小多了
+
+
+   -->
+</body>
+
+</html>

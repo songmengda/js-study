@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    webpack的多线程打包
+    
+
+    需要使用的模块交happypack
+
+
+    如何配置?
+
+let path = require('path')
+let HtmlWebpackPlugin = require('html-webpack-plugin')
+let webpack = require('webpack')
+
+let Happypack = require('happypack')
+
+module.exports = {
+  mode: "development",
+  entry: './src/index.js',
+  output: {
+    filename: "bundle.js",
+    path: path.resolve(__dirname, 'dist')
+  },
+  devServer: {
+    port: 3000,
+    open: true,
+    contentBase: './dist' // 打包后的文件放到这里s
+  },
+  module: {
+    noParse: /jquery/, // 不去解析jquery中的依赖
+    rules: [
+      // {
+      //   test: /\.js$/,
+      //   exclude: /node_modules/, // 忽略node_modules中的文件
+      //   include: path.resolve('src'), // 与exclude相对   只在。。。中找
+      //   use: {
+      //     loader: 'babel-loader',
+      //     options: {
+      //       presets: [
+      //         '@babel/preset-env',
+      //         '@babel/preset-react'
+      //       ]
+      //     }
+      //   }
+      // },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/, // 忽略node_modules中的文件
+        include: path.resolve('src'), // 与exclude相对   只在。。。中找
+        use: 'Happypack/loader?id=js'
+      },
+      { // css多线程打包
+        test: /\.css$/,
+        use: 'Happypack/loader?id=css'
+      }
+    ]
+  },
+  plugins: [
+    new Happypack({
+      id: 'css',
+      use: ['style-loader', 'css-loader']
+    }),
+    new Happypack({
+      id: 'js',
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env',
+              '@babel/preset-react'
+            ]
+          }
+        }
+      ]
+    }),
+    new webpack.DllReferencePlugin({
+      manifest: path.resolve(__dirname, 'dist', 'manifest.json')
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    }),
+    new webpack.IgnorePlugin(/\.\/locale/, /moment/)
+  ]
+
+}
+   -->
+</body>
+
+</html>

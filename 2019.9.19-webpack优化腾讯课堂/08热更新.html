@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    配置
+  devServer: {
+    hot: true, // 启动热更新
+    port: 3000,
+    open: true,
+    contentBase: './dist' // 打包后的文件放到这里s
+  },
+      new webpack.NamedModulesPlugin(), // 打印更新的模块路径
+    new webpack.HotModuleReplacementPlugin() // 热更新插件
+
+
+
+
+
+    js
+
+import str from './test'
+console.log(str)
+if (module.hot) {
+  module.hot.accept('./test', () => {
+    console.log('文件更新了')
+    let aa = require('./test')
+    console.log(aa)
+  })
+}
+   -->
+</body>
+
+</html>

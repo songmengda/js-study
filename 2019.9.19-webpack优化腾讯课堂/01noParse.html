@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    1.初始化  npm init 
+    npm i webpack webpack-cli html-webpack-plugin @babel/core babel-loader @babel/preset-env @babel/preset-react -D
+    新建webpack.config.js
+    新建src/index
+    新建public/index.html 
+
+    webpack.config.js
+      let path = require('path')
+      let HtmlWebpackPlugin = require('html-webpack-plugin')
+
+      module.exports = {
+        mode: "development",
+        entry: './src/index.js',
+        output: {
+          filename: "bundle.js",
+          path: path.resolve(__dirname, 'dist')
+        },
+        module: {
+          noParse: /jquery/, // 不去解析jquery中的依赖 我自己测试的时候  好像并没有生效
+          rules: [
+            {
+              test: /\.js$/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: [
+                    '@babel/preset-env',
+                    '@babel/preset-react'
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        plugins: [
+          new HtmlWebpackPlugin({
+            template: './public/index.html'
+          })
+        ]
+
+      }
+
+
+
+
+   -->
+</body>
+
+</html>
