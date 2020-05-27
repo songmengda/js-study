@@ -1,0 +1,12 @@
+{
+  "name": "songhahadiyigenpmpush",
+  "version": "1.0.0",
+  "description": "song",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx webpack"
+  },
+  "author": "Songmengda",
+  "license": "ISC"
+}

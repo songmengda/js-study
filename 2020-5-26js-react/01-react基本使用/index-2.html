@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+  <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+
+<body>
+
+  <div id="app1"></div>
+  <div id="app2"></div>
+  <script type="text/babel">
+    function h() {
+      return <h2>react function</h2>
+    }
+    class C extends React.Component {
+      constructor(props) {
+        super(props)
+      }
+      render() {
+        return <h1>react class</h1>
+      }
+    }
+
+    ReactDOM.render(h(), document.getElementById('app1'))
+    ReactDOM.render(<C />, document.getElementById('app2'))
+  </script>
+</body>
+
+</html>

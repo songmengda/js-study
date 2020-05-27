@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>前端路由和后端路由</title>
+</head>
+<style>
+  body {
+    margin-left: 50px;
+    font-size: 14px;
+  }
+
+  h2 {}
+
+  h3 {
+    color: #42b983;
+    font-size: 22px;
+  }
+
+  h4 {
+    color: #42b983;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 700;
+  }
+</style>
+
+<body>
+
+
+  <h4>1.什么是路由？</h4>
+  <h4>2.后端路由？</h4>
+  <h4>3.前端路由?</h4>
+  <hr>
+
+  <h3>一.什么是路由</h3>
+  指的是在浏览器中，页面与页面之间的一种跳转规则，基本上是根据不同的url展示不同的页面或者内容
+
+  <h3>二.后端路由</h3>
+  URL 与处理函数之间的映射关系。，服务端会有一个类似路径配置表的一个东西，当url被解析之后，会先走后端的服务，然后在这个配置表里去匹配，当匹配到这一条url后，
+  就会分发到不同的controller，处理完之后 将html或者数据返回给前端，浏览器进行渲染，
+  <p>优点</p>
+  <li>1.对SEO友好</li>
+  <li>2.因为服务器返回的是html部分，交给浏览器渲染的时候,就是全部内容， 所以渲染起来呈现给人们看到的会比较流程</li>
+  <p>缺点</p>
+  <li>1.模板代码是由后端编写和维护的，需要前端学习java等后端语言，并且安装后端服务开发环境 在.vm中去开发写交互</li>
+  <li>2.每次访问页面，都会向服务器发请求 ，对服务器压力 和用户的整体体验不好</li>
+  <li>3.页面内的元素、数据、交互逻辑都都混合在一起，维护困难</li>
+
+
+  <h3>三.前端路由</h3>
+  URL 与 UI 之间的映射关系，这种映射是单向的，即 URL 变化引起 UI 更新（无需刷新页面）。
+  很重要的一点是页面不刷新，前端路由就是把不同路由对应不同的内容或页面的任务交给前端来做，每跳转到不同的URL都是使用前端的锚点路由.
+  随着（SPA）单页应用的不断普及，前后端开发分离，目前项目基本都使用前端路由，在项目使用期间页面不会重新加载，大部分页面结构不变，只改变部分内容的使用
+  <p>优点</p>
+  <li>
+    1.从性能和用户体验的层面来比较的话，后端路由每次访问一个新页面的时候都要向服务器发送请求，然后服务器再响应请求，这个过程肯定会有延迟。而前端路由在访问一个新页面的时候仅仅是变换了一下路径而已，没有了网络延迟，对于用户体验来说会有相当大的提升。
+  </li>
+  <li>2.可以再浏览器中输入指定想要访问的url路径地址。</li>
+  <li>3.实现了前后端的分离，方便开发。有很多框架都带有路由功能模块。</li>
+  <p>缺点</p>
+  使用后端路由的优点
+
+
+  <h3>如何实现一个前端路由</h3>
+  故事从名叫Oliver（程序员）的绿箭虾`说起，这位大虾酷爱社交网站，一天他打开了 Twitter ，从发过的tweets的选项卡一路切到followers选项卡，Oliver发现页面的内容变化了，URL也变化了，但为什么页面没有闪烁刷新呢？
+  于是Oliver打开的网络监控器，他惊讶地发现在切换选项卡时，只有几个XHR请求发生，但页面的URL却在对应着变化，这让Oliver不得不去思考这一机制的原因…
+
+  <p>能做到这种效果的 目前两种使用广泛的有</p>
+  1.hash 实现<br>
+  通过 hashchange 事件监听 URL 的变化，改变 URL 的方式只有这几种：通过浏览器前进后退改变 URL、通过标签改变 URL、通过window.location改变URL，这几种情况改变 URL 都会触发
+  hashchange 事件<br><br>
+
+  2.history 实现<br>
+
+  history 提供了 pushState 和 replaceState 两个方法，这两个方法改变 URL 的 path 部分不会引起页面刷新
+  history 提供类似 hashchange 事件的 popstate 事件，但popstate 事件有些不同：通过浏览器前进后退改变 URL 时会触发 popstate
+  事件，通过pushState/replaceState或标签改变 URL 不会触发 popstate 事件。好在我们可以拦截pushState/replaceState的调用和标签的点击事件来检测 URL 变化，所以监听 URL
+  变化可以实现，只是没有 hashchange 那么方便。
+
+  <!-- 能做到这一点源于h5的几个新api：
+  <pre>
+    /*Pushes the given data onto the session history, with the given title, and, if provided and not null, the given URL.*/
+    window . history . pushState(data, title [url] )
+     
+    /*Updates the current entry in the session history to have the given data, title, and,if provided and not null, URL.*/
+    window . history . replaceState(data, title [url] )
+  </pre>
+
+  这两个Api都会操作浏览器的历史栈，而不会引起页面的刷新。不同的是，pushState会增加一条新的历史记录，而replaceState则会替换当前的历史记录。 -->
+
+</body>
+
+</html>

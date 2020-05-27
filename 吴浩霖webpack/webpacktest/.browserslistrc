@@ -1,0 +1,8 @@
+# Browsers that we support
+defaults
+not ie < 11
+last 1 version
+> 1%
+iOS 7
+IE 10 # sorry
+last 3 iOS versions

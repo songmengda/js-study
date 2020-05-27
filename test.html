@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <input id='id_accountCode' type='input' name='accountCode' value="啦啦啦" readOnly="readOnly" />
+  <script>
+    let p = { name: '西游记' }
+    let obj = new Proxy(p, {
+      get: function (target, key, receiver) {
+        /**
+        target:目标对象
+        key:属性名
+        receiver:proxy 实例本身
+        */
+        return target[key] = '海贼王'
+      },
+      set: function (obj, prop, value, receiver) {
+        /**
+        obj:目标对象
+        prop:属性名
+        value:属性值
+        receiver:Proxy 实例本身
+        */
+        if (value > 5) {
+          value = 5
+        }
+        return obj[prop] = value
+      }
+    })
+    let str = `我喜欢看${obj.name}` // 我喜欢看海贼王
+    console.log(str)
+  </script>
+  <script>
+    var accountCodeValue = document.getElementById('id_accountCode').value
+  </script>
+</body>
+
+</html>

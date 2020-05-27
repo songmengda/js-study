@@ -1,0 +1,8 @@
+$color:red;
+.app{
+  font-size: 20px;
+  display: flex;
+  .page{
+    color: $color;
+  }
+}
