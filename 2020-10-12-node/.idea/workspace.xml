@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="faa60237-47b3-4bed-85df-6ff547e344e8" name="默认的" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/2020-10-12-node.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2-CommonJs和Nodejs模块/Common-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2-CommonJs和Nodejs模块/tools-2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2-CommonJs和Nodejs模块/tools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2019.10.14angular入门/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2020-5-26js-react/01-react基本使用/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../2020-5-26js-react/01-react基本使用/index-3.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1iogEurmf6NCrse7tJttE1LEBbP" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="8.15.1" />
+    <property name="javascript.nodejs.core.library.typings.version" value="8.10.64" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/2-CommonJs和Nodejs模块/node_modules/tools" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.Common-1.js">
+    <configuration name="Common-1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/2-CommonJs和Nodejs模块/Common-1.js" working-dir="$PROJECT_DIR$/2-CommonJs和Nodejs模块">
+      <method v="2" />
+    </configuration>
+    <configuration name="url-1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/1-http-url-supervisor模块/url-1.js" working-dir="$PROJECT_DIR$/1-http-url-supervisor模块">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.Common-1.js" />
+        <item itemvalue="Node.js.url-1.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="faa60237-47b3-4bed-85df-6ff547e344e8" name="默认的" comment="" />
+      <created>1602579250607</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602579250607</updated>
+      <workItem from="1602579251652" duration="1624000" />
+      <workItem from="1602596065070" duration="4800000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1223" y="375" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1602641701787">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1223" y="375" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602641701787" />
+    <state x="-1289" y="336" key="EditFileWatcherDialog" timestamp="1602641948681">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1289" y="336" key="EditFileWatcherDialog/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602641948681" />
+    <state width="1899" height="290" key="GridCell.Tab.0.bottom" timestamp="1602643892419">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="290" key="GridCell.Tab.0.bottom/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602643892419" />
+    <state width="1899" height="290" key="GridCell.Tab.0.center" timestamp="1602643892417">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="290" key="GridCell.Tab.0.center/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602643892417" />
+    <state width="1899" height="290" key="GridCell.Tab.0.left" timestamp="1602643892417">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="290" key="GridCell.Tab.0.left/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602643892417" />
+    <state width="1899" height="290" key="GridCell.Tab.0.right" timestamp="1602643892418">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="290" key="GridCell.Tab.0.right/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602643892418" />
+    <state x="-1451" y="190" key="SettingsEditor" timestamp="1602642703490">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1451" y="190" key="SettingsEditor/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602642703490" />
+  </component>
+</project>
