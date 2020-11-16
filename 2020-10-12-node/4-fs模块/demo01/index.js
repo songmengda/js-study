@@ -1,0 +1,6 @@
+var str = "NODE"
+ var name = "二哈"
+var name = "二哈"
+var name = "二哈"
+var name = "二哈"
+var name = "二哈"

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsx理解和基本使用</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <script type="text/javascript">
+        const msg = 'I Like You'
+        const myId = 'S.M.D'
+        // 方式1  创建虚拟dom    渲染虚拟dom
+        const vDom1 = React.createElement('h1',{id:myId.toLowerCase()},msg.toUpperCase())
+        ReactDOM.render(vDom1,document.getElementById('test1'))
+    </script>
+    <script type="text/babel">
+        //方式2  使用jsx
+        const vDom2= <h3 id={myId.toUpperCase()}>{msg.toLowerCase()}</h3>
+        ReactDOM.render(vDom2,document.getElementById('test2'))
+
+
+        //  真实dom重  虚拟dom轻
+
+        //更新真是dom 页面会重绘   更新虚拟dom  不会
+    </script>
+</body>
+</html>

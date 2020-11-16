@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jsx理解和基本使用</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+   <h1>react渲染列表</h1>
+    <div id="test1"></div>
+    <script type="text/babel">
+        const books = [
+            'jq',
+            'zpto',
+            'agl',
+            'vue',
+            'react',
+            'js高程'
+        ]
+
+        //使用数组的map 方法可以将数组转换为标签数组
+        const ul = <ul>{
+                books.map((name,index)=><li key={index}>{name}</li>)
+            }
+        </ul>
+        ReactDOM.render(ul,document.getElementById('test1'))
+    </script>
+</body>
+</html>

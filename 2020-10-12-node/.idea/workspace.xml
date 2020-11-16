@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="faa60237-47b3-4bed-85df-6ff547e344e8" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/2020-10-12-node.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2-CommonJs和Nodejs模块/Common-1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2-CommonJs和Nodejs模块/tools-2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2-CommonJs和Nodejs模块/tools.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3-NPM和第三方模块和package/commonjs-1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3-NPM和第三方模块和package/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3-NPM和第三方模块和package/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4-fs模块/01-fs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4-fs模块/02-fs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4-fs模块/demo/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4-fs模块/demo/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4-fs模块/demo01/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4-fs模块/demo01/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4-fs模块/html/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4-fs模块/html/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4-fs模块/html/utils/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../2020-5-26js-react/react-study/day01/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../2019.10.14angular入门/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2020-5-26js-react/01-react基本使用/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/../2020-5-26js-react/01-react基本使用/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../2020-5-26js-react/01-react基本使用/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/../2020-5-26js-react/01-react基本使用/index-2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../2020-5-26js-react/01-react基本使用/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/../2020-5-26js-react/01-react基本使用/index-3.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +48,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -35,12 +63,15 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1iogEurmf6NCrse7tJttE1LEBbP" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="新增" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -48,6 +79,7 @@
     <property name="javascript.nodejs.core.library.configured.version" value="8.15.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="8.10.64" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -56,7 +88,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.jest.jest_package" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -67,17 +99,29 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.Common-1.js">
+  <component name="RunManager" selected="Node.js.02-fs.js">
+    <configuration name="01-fs.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/4-fs模块/01-fs.js" working-dir="$PROJECT_DIR$/4-fs模块">
+      <method v="2" />
+    </configuration>
+    <configuration name="02-fs.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/4-fs模块/02-fs.js" working-dir="$PROJECT_DIR$/4-fs模块">
+      <method v="2" />
+    </configuration>
     <configuration name="Common-1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/2-CommonJs和Nodejs模块/Common-1.js" working-dir="$PROJECT_DIR$/2-CommonJs和Nodejs模块">
       <method v="2" />
     </configuration>
-    <configuration name="url-1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/1-http-url-supervisor模块/url-1.js" working-dir="$PROJECT_DIR$/1-http-url-supervisor模块">
+    <configuration name="commonjs-1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/3-NPM和第三方模块和package/commonjs-1.js" working-dir="$PROJECT_DIR$/3-NPM和第三方模块和package">
+      <method v="2" />
+    </configuration>
+    <configuration name="http-1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/1-http-url-supervisor模块/http-1.js" working-dir="$PROJECT_DIR$/1-http-url-supervisor模块">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.02-fs.js" />
+        <item itemvalue="Node.js.01-fs.js" />
+        <item itemvalue="Node.js.commonjs-1.js" />
+        <item itemvalue="Node.js.http-1.js" />
         <item itemvalue="Node.js.Common-1.js" />
-        <item itemvalue="Node.js.url-1.js" />
       </list>
     </recent_temporary>
   </component>
@@ -90,12 +134,39 @@
       <option name="presentableId" value="Default" />
       <updated>1602579250607</updated>
       <workItem from="1602579251652" duration="1624000" />
-      <workItem from="1602596065070" duration="4800000" />
+      <workItem from="1602596065070" duration="20937000" />
+      <workItem from="1603174139030" duration="598000" />
+      <workItem from="1603194626237" duration="6435000" />
+      <workItem from="1603417268849" duration="323000" />
+      <workItem from="1603418181389" duration="19000" />
+      <workItem from="1603418648719" duration="510000" />
+      <workItem from="1603441795397" duration="3219000" />
+      <workItem from="1603809795383" duration="189000" />
+      <workItem from="1603810147445" duration="19000" />
+      <workItem from="1603810205267" duration="11000" />
+      <workItem from="1603810229297" duration="34000" />
+      <workItem from="1603810275565" duration="23000" />
+      <workItem from="1603810633558" duration="6000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1223" y="375" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1602641701787">
@@ -106,25 +177,37 @@
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
     <state x="-1289" y="336" key="EditFileWatcherDialog/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602641948681" />
-    <state width="1899" height="290" key="GridCell.Tab.0.bottom" timestamp="1602643892419">
+    <state width="1899" height="308" key="GridCell.Tab.0.bottom" timestamp="1603458572646">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1899" height="290" key="GridCell.Tab.0.bottom/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602643892419" />
-    <state width="1899" height="290" key="GridCell.Tab.0.center" timestamp="1602643892417">
+    <state width="1899" height="308" key="GridCell.Tab.0.bottom/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1603458572646" />
+    <state width="1899" height="290" key="GridCell.Tab.0.bottom/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@1680.23.1920.1057" timestamp="1603417048084" />
+    <state width="1899" height="308" key="GridCell.Tab.0.center" timestamp="1603458572645">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1899" height="290" key="GridCell.Tab.0.center/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602643892417" />
-    <state width="1899" height="290" key="GridCell.Tab.0.left" timestamp="1602643892417">
+    <state width="1899" height="308" key="GridCell.Tab.0.center/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1603458572645" />
+    <state width="1899" height="290" key="GridCell.Tab.0.center/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@1680.23.1920.1057" timestamp="1603417048083" />
+    <state width="1899" height="308" key="GridCell.Tab.0.left" timestamp="1603458572644">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1899" height="290" key="GridCell.Tab.0.left/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602643892417" />
-    <state width="1899" height="290" key="GridCell.Tab.0.right" timestamp="1602643892418">
+    <state width="1899" height="308" key="GridCell.Tab.0.left/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1603458572644" />
+    <state width="1899" height="290" key="GridCell.Tab.0.left/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@1680.23.1920.1057" timestamp="1603417048083" />
+    <state width="1899" height="308" key="GridCell.Tab.0.right" timestamp="1603458572646">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state width="1899" height="290" key="GridCell.Tab.0.right/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602643892418" />
-    <state x="-1451" y="190" key="SettingsEditor" timestamp="1602642703490">
+    <state width="1899" height="308" key="GridCell.Tab.0.right/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1603458572646" />
+    <state width="1899" height="290" key="GridCell.Tab.0.right/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@1680.23.1920.1057" timestamp="1603417048084" />
+    <state x="-1451" y="190" key="SettingsEditor" timestamp="1603111664210">
       <screen x="-1920" y="23" width="1920" height="1057" />
     </state>
-    <state x="-1451" y="190" key="SettingsEditor/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602642703490" />
+    <state x="-1451" y="190" key="SettingsEditor/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1603111664210" />
+    <state x="-1457" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1602813085937">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1457" y="169" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602813085937" />
+    <state x="-1295" y="258" width="670" height="676" key="search.everywhere.popup" timestamp="1602769828332">
+      <screen x="-1920" y="23" width="1920" height="1057" />
+    </state>
+    <state x="-1295" y="258" width="670" height="676" key="search.everywhere.popup/1680.23.1920.1057/0.23.1680.973/-1920.23.1920.1057@-1920.23.1920.1057" timestamp="1602769828332" />
   </component>
 </project>

@@ -24,9 +24,7 @@
         this.hd = this.hd.bind(this)
       }
       hd() {
-        this.setState(() => {
-          this.state.smg = "state react"
-        })
+        this.setState({ smg: 'click react' })
       }
       render() {
         const { smg } = this.state

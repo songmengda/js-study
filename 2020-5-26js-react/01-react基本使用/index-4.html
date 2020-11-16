@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+  <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+
+<body>
+
+  <div id="app1"></div>
+  <script type="text/babel">
+    class Root extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          todoList: [
+            '睡觉',
+            '吃饭',
+            '玩'
+          ]
+        }
+        this.hdClick = this.hdClick.bind(this)
+      }
+      hdClick(data) {
+        console.log(data)
+        console.log([...this.state.todoList])
+        this.setState({ todoList: [data, ...this.state.todoList] })
+
+      }
+      render() {
+        const pageTitle = '内容标题'
+        const { todoList } = this.state
+        return (
+          <div>
+            <Title title={pageTitle} />
+            <InputBtn hdClick={this.hdClick} />
+            <TodoList todoList={todoList} />
+          </div>
+        )
+      }
+    }
+    class Title extends React.Component {
+      render() {
+        const { title } = this.props
+        return <h1>{title}</h1>
+      }
+    }
+    class InputBtn extends React.Component {
+      constructor(props) {
+        super(props)
+        this.hdClick = this.hdClick.bind(this)
+      }
+      hdClick() {
+        const todo = this.inputVal.value.trim()
+        if (!todo) return
+        this.props.hdClick(todo)
+        this.inputVal.value = ''
+      }
+      render() {
+        return (
+          <div>
+            <input type="text" ref={input => this.inputVal = input} />
+            <button onClick={this.hdClick}>添加事项</button>
+          </div>
+        )
+      }
+    }
+    class TodoList extends React.Component {
+      render() {
+        return (
+          <ul>
+            {this.props.todoList.map((item, index) => {
+              return <li key={index}>{item}</li>
+            })}
+          </ul>
+        )
+      }
+    }
+    ReactDOM.render(<Root />, document.getElementById('app1'))
+  </script>
+</body>
+
+</html>

@@ -1,3 +1,10 @@
+<!--
+ * @Author: S.M.D
+ * @Date: 2020-05-27 12:19:22
+ * @LastEditors: S.M.D
+ * @LastEditTime: 2020-10-27 22:20:51
+ * @Description: file content
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,10 +20,18 @@
 
 <body>
 
+  <!-- 
+    1.引入react react-dom  babel
+
+    2.创建虚拟dom
+
+    3.渲染到指定位置
+   -->
   <div id="app"></div>
   <script type="text/babel">
     const h = <h2>react</h2>
     console.log(ReactDOM)
+    console.log(h)
     ReactDOM.render(h, document.getElementById('app'))
   </script>
 </body>

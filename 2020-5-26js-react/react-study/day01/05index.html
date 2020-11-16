@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>react之state</title>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+<body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <script type="text/babel">
+        class Like extends React.Component{
+            //
+            constructor (props){
+                super(props)
+                //1.初始化状态
+                this.state = {
+                    iLikeMe:false
+                }
+
+                // 将新增的方法中的this强制绑定组件对象
+                this.clk=this.clk.bind(this)
+            }
+            clk(){
+                //更新状态
+                const iLikeMe  =!this.state.iLikeMe
+                this.setState({iLikeMe})
+            }
+            render(){
+                // 2.读取状态
+                const {iLikeMe} = this.state
+                return <h1 onClick={this.clk}>{iLikeMe?'我喜欢你':'你喜欢我'}</h1>
+            }
+        }
+
+        ReactDOM.render(<Like />,document.getElementById('test1'))
+    </script>
+</body>
+</html>
